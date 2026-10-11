@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff4f7">
+<title>فقط برای تو 🌷</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+:root{--pink:#d95f87;--deep:#873c5c;--ink:#573746;--paper:#fffafc;--rose:#ffe6ef;--line:#f3cbd9}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#fff 0,#fff3f7 50%,#ffe8f0 100%);font-family:"Vazirmatn",Tahoma,sans-serif;color:var(--ink);min-height:100vh}
+main{width:min(720px,100%);margin:auto;padding:24px 16px 48px}
+.top{display:flex;justify-content:center;gap:8px;align-items:center;color:var(--pink);font-size:14px;margin:8px 0 20px}
+.hero,.panel{background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:28px;padding:26px 20px;box-shadow:0 12px 35px #b85b7b12;text-align:center}
+.flower{font-size:42px;animation:float 3s ease-in-out infinite;display:inline-block}
+h1{font-size:clamp(27px,7vw,40px);line-height:1.5;margin:8px 0;color:var(--deep)}
+.subtitle{line-height:2;color:#876777;margin:0 auto 20px;max-width:480px}
+button{font:inherit;border:0;cursor:pointer;border-radius:999px;padding:13px 20px;background:var(--pink);color:white;font-weight:700;box-shadow:0 6px 15px #d95f8730;transition:transform .2s}
+button:active{transform:scale(.98)}
+button.secondary{background:#fff1f6;color:var(--deep);border:1px solid var(--line);box-shadow:none}
+.hidden{display:none!important}
+.progress{height:7px;border-radius:20px;background:#f8e0e9;overflow:hidden;margin:0 0 16px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#ee9ab7,#d95f87);transition:width .3s}
+.eyebrow{font-size:13px;color:var(--pink);font-weight:700;letter-spacing:.3px}
+.panel h2{font-size:24px;color:var(--deep);margin:8px 0 14px}
+.message{font-size:17px;line-height:2.15;white-space:pre-line;margin:0 auto 22px;max-width:550px}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.dots{display:flex;justify-content:center;gap:7px;margin:18px 0}
+.dot{width:8px;height:8px;background:#f0cada;border-radius:50%}.dot.active{background:var(--pink);transform:scale(1.25)}
+.note{font-size:12px;color:#a17e8e;line-height:1.9;margin-top:18px}
+.footer{text-align:center;font-size:12px;color:#aa8292;margin-top:22px}
+.heart{font-size:38px;display:inline-block;animation:beat 1.2s infinite}
+input{font:inherit;width:100%;max-width:300px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#fffafd;color:var(--ink);text-align:center;outline-color:var(--pink);margin:6px 0 12px}
+.feedback{font-size:14px;min-height:24px;color:var(--pink);margin-top:10px}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-7px) rotate(4deg)}}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.13)}30%{transform:scale(1)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+  <div class="top">🌷 <span>یک هدیه‌ی کوچیک، فقط برای تو</span> 🌷</div>
+  <section class="hero" id="welcome">
+    <div class="flower">💌</div>
+    <h1>یه دنیای کوچیک<br>فقط برای تو</h1>
+    <p class="subtitle">چند تا حرف دارم که دلم می‌خواست با حوصله بخونیشون.<br>این صفحه رو آروم‌آروم کشف کن. عجله‌ای نیست. 🤍</p>
+    <button id="start">بازش کن ✨</button>
+    <p class="note">پیشنهاد: صدا رو روشن کن و هر پیام رو با حوصله بخون.</p>
+  </section>
+
+  <section class="panel hidden" id="experience" aria-live="polite">
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="eyebrow" id="count">پیام ۱ از ۷</div>
+    <div class="dots" id="dots"></div>
+    <div id="content"></div>
+    <div class="controls">
+      <button id="next">پیام بعدی 💗</button>
+      <button class="secondary hidden" id="restart">از اول بخون</button>
+    </div>
+    <p class="note">این صفحه برای تو ساخته شده؛ لازم نیست هیچ جوابی رو درست یا کامل بدی. فقط خودت باش. 🌸</p>
+  </section>
+  <div class="footer">با فکر و مهر آماده شده 💗</div>
+</main>
+<script>
+const messages = [
+ {title:"کلید ورود", emoji:"🗝️", text:"اول از همه می‌خوام بدونی که لازم نیست امروز کار خاصی انجام بدی تا دوست‌داشتنی باشی.\nهمین که خودتی، با همه‌ی احساسات و قشنگی‌های مخصوص خودت، ارزشمندی. ❤️"},
+ {title:"قاب یک خاطره", emoji:"📷", text:"بعضی لحظه‌های کوچیک بی‌سروصدا توی ذهن آدم می‌مونن.\nبرای من هم از آشنایی با تو لحظه‌هایی هست که یادآوریشون لبخند میاره.\n\n[اینجا یک خاطره‌ی واقعی از خودتون بنویس]"},
+ {title:"سه چیز قشنگ", emoji:"🌷", text:"سه چیز درباره‌ت هست که دوست دارم بهت یادآوری کنم:\n\n۱. مهربونی‌ای که توی رفتارت دیده می‌شه.\n۲. احساسی که پشت حرف‌هات هست.\n۳. اون بخش از شخصیتت که فقط مال خودته و هیچ‌کس دقیقاً مثل تو نیست.\n\nهنوز چیزهای بیشتری هست که دوست دارم درباره‌ت بشناسم. 🫶"},
+ {title:"یک سؤال کوچولو", emoji:"✨", text:"حالا نوبت توئه!\n\nاگه می‌تونستیم یه خاطره‌ی قشنگ با هم بسازیم، دوست داشتی چه کاری انجام بدیم؟\n\nجوابت رو لازم نیست اینجا بنویسی؛ می‌تونی بعداً توی تلگرام برام تعریفش کنی. 💗"},
+ {title:"چیزهایی که دوست دارم بشناسم", emoji:"🪻", text:"یکی از قشنگ‌ترین بخش‌های آشنا شدن با یه نفر اینه که کم‌کم با دنیای درونش آشنا می‌شی؛ با فکرهاش، علایقش و چیزهای کوچیکی که خوشحالش می‌کنن.\n\nدوست دارم تو رو همین‌طوری، آروم‌آروم و واقعی‌تر بشناسم. ❤️"},
+ {title:"پاکت نامه", emoji:"✉️", text:"رسیدیم به یه قسمت مهم‌تر...\n\nتا اینجا چند تا حرف کوچیک بهت زدم، ولی یه حرف دیگه هم مونده.\n\nاین یکی رو با حوصله بخون؛ برای نوشتنش به تو فکر کردم. 🥹💌"},
+ {title:"روزت مبارک", emoji:"💖", text:"دختر مهربون، روزت مبارک. 🌷\n\nشاید هنوز مدت زیادی از آشنایی‌مون نگذشته باشه، ولی خوشحالم که فرصت پیدا کردم بیشتر باهات آشنا بشم و بخشی از روزهامون رو با هم شریک بشیم.\n\nنمی‌خوام فقط امروز بهت بگم دوست‌داشتنی هستی؛ می‌خوام بدونی مهربونی، احساسات و آرزوهای خودت هم ارزشمندند. امیدوارم برای چیزهایی که خوشحالت می‌کنن وقت داشته باشی و به آرزوهات نزدیک‌تر بشی.\n\nاین سورپرایز شاید هدیه‌ی بزرگی نباشه، اما با فکر کردن به تو آماده‌ش کردم.\n\nامیدوارم امروز یه لبخند واقعی روی لبت آورده باشم. ✨"}
+];
+let index=0;
+const welcome=document.getElementById('welcome'), exp=document.getElementById('experience'), content=document.getElementById('content'), count=document.getElementById('count'), bar=document.getElementById('bar'), next=document.getElementById('next'), restart=document.getElementById('restart'), dots=document.getElementById('dots');
+function render(){
+ const m=messages[index];
+ count.textContent=`پیام ${index+1} از ${messages.length}`;
+ bar.style.width=`${((index+1)/messages.length)*100}%`;
+ dots.innerHTML=messages.map((_,i)=>`<span class="dot ${i===index?'active':''}"></span>`).join('');
+ content.innerHTML=`<div style="font-size:38px;margin:10px 0">${m.emoji}</div><h2>${m.title}</h2><p class="message"></p>`;
+ content.querySelector('.message').textContent=m.text;
+ if(index===messages.length-1){next.textContent='پایان 💗';restart.classList.remove('hidden')}
+ else{next.textContent='پیام بعدی 💗';restart.classList.add('hidden')}
+}
+document.getElementById('start').addEventListener('click',()=>{welcome.classList.add('hidden');exp.classList.remove('hidden');index=0;render();window.scrollTo({top:0,behavior:'smooth'})});
+next.addEventListener('click',()=>{if(index<messages.length-1){index++;render();window.scrollTo({top:0,behavior:'smooth'})}else{content.innerHTML='<div class="heart">💗</div><h2>موزه‌ی کوچولوی ما تموم شد</h2><p class="message">ولی خاطره‌هایی که هنوز نساختیم، باقی موندن. 🌷\n\nروزت مبارک!</p>';next.classList.add('hidden');}});
+restart.addEventListener('click',()=>{index=0;next.classList.remove('hidden');render();window.scrollTo({top:0,behavior:'smooth'})});
+</script>
+</body>
+</html>
